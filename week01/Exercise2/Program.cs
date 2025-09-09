@@ -11,7 +11,7 @@ class Program
         string letter = "";
         string sign = "";
 
-        // Determinar la letra
+        // Determine the letter
         if (grade >= 90)
         {
             letter = "A";
@@ -33,7 +33,7 @@ class Program
             letter = "F";
         }
 
-        // Determinar el signo (solo si no es F)
+        // Determine the sign (only if not F)
         if (letter != "F")
         {
             int lastDigit = grade % 10;
@@ -48,23 +48,23 @@ class Program
             }
         }
 
-        // Casos especiales:
-        // No existe A+
+        // Special cases:
+        // There is no A+
         if (letter == "A" && sign == "+")
         {
             sign = "";
         }
 
-        // No existe F+ ni F-
+        // There is no F+ or F-
         if (letter == "F")
         {
             sign = "";
         }
 
-        // Mostrar la calificación con signo
+        // Display the rating with sign
         Console.WriteLine($"Letter grade: {letter}{sign}");
 
-        // Mensaje de aprobado o no
+        // Approved or failed message
         if (grade >= 70)
         {
             Console.WriteLine("Congratulations, you passed the course!");
