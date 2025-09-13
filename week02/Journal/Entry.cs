@@ -2,19 +2,27 @@ using System;
 
 public class Entry
 {
-    private string _date;
-    private string _promptText;
-    private string _entryText;
+    public string Date { get; private set; }
+    public string PromptText { get; private set; }
+    public string EntryText { get; private set; }
+    public string Mood { get; private set; }
+    public string Location { get; private set; }
 
-    public Entry(string date, string promptText, string entryText)
+    public Entry(string date, string promptText, string entryText, string mood, string location)
     {
-        _date = date;
-        _promptText = promptText;
-        _entryText = entryText;
+        Date = date;
+        PromptText = promptText;
+        EntryText = entryText;
+        Mood = mood;
+        Location = location;
     }
 
     public void Display()
     {
-        // todavía vacío
+        Console.WriteLine($"Date: {Date}");
+        Console.WriteLine($"Prompt: {PromptText}");
+        Console.WriteLine($"Entry: {EntryText}");
+        Console.WriteLine($"Mood: {Mood}");
+        Console.WriteLine($"Location: {Location}");
     }
 }
