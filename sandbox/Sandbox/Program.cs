@@ -1,48 +1,43 @@
 using System;
 
-class CuentaBancaria
+class BankAccount
 {
-    // Campo privado solo accesible dentro de la clase
-    private double saldo;
+    private decimal balance;  // Campo privado: solo accesible dentro de la clase
 
-    // Constructor para inicializar el saldo
-    public CuentaBancaria(double saldoInicial)
+    public BankAccount(decimal initialBalance)
     {
-        saldo = saldoInicial;
+        balance = initialBalance;
     }
 
-    // Método público para depositar dinero
-    public void Depositar(double cantidad)
+    public void Deposit(decimal amount)
     {
-        if (cantidad > 0)
+        if (amount > 0)
         {
-            saldo += cantidad;
-            Console.WriteLine($"Depositaste: {cantidad}. Saldo actual: {saldo}");
+            balance += amount;
+            Console.WriteLine($"Depósito exitoso: +{amount:C}. Nuevo saldo: {balance:C}");
         }
         else
         {
-            Console.WriteLine("La cantidad debe ser positiva.");
+            Console.WriteLine("El monto a depositar debe ser positivo.");
         }
     }
 
-    // Método público para retirar dinero
-    public void Retirar(double cantidad)
+    public void Withdraw(decimal amount)
     {
-        if (cantidad > 0 && cantidad <= saldo)
+        if (amount <= balance && amount > 0)
         {
-            saldo -= cantidad;
-            Console.WriteLine($"Retiraste: {cantidad}. Saldo actual: {saldo}");
+            balance -= amount;
+            Console.WriteLine($"Retiro exitoso: -{amount:C}. Nuevo saldo: {balance:C}");
         }
         else
         {
-            Console.WriteLine("Fondos insuficientes o cantidad invalida.");
+            Console.WriteLine("Fondos insuficientes o monto inválido.");
         }
     }
 
-    // Método público para consultar el saldo
-    public double ObtenerSaldo()
+    public decimal GetBalance()
     {
-        return saldo;
+        return balance;
     }
 }
 
@@ -50,12 +45,14 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Ejercicio: Cuenta Bancaria");
+        BankAccount account = new BankAccount(1000m); // Cuenta con saldo inicial de 1000
 
-        CuentaBancaria cuenta = new CuentaBancaria(100); //saldo inicial
+        account.Deposit(500m);   // Depositar
+        account.Withdraw(200m);  // Retirar
+        account.Withdraw(2000m); // Intentar retirar más del saldo
 
-        cuenta.Depositar(50); // Depositar 50
-        cuenta.Retirar(30);  // Retirar 30
-        Console.WriteLine(cuenta.ObtenerSaldo()); // Consultar saldo
+        Console.WriteLine($"Saldo final: {account.GetBalance():C}");
+
+        Console.ReadLine();
     }
 }
