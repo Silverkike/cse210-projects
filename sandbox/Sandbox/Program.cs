@@ -1,58 +1,31 @@
 using System;
 
-class BankAccount
-{
-    private decimal balance;  // Campo privado: solo accesible dentro de la clase
-
-    public BankAccount(decimal initialBalance)
-    {
-        balance = initialBalance;
-    }
-
-    public void Deposit(decimal amount)
-    {
-        if (amount > 0)
-        {
-            balance += amount;
-            Console.WriteLine($"Depósito exitoso: +{amount:C}. Nuevo saldo: {balance:C}");
-        }
-        else
-        {
-            Console.WriteLine("El monto a depositar debe ser positivo.");
-        }
-    }
-
-    public void Withdraw(decimal amount)
-    {
-        if (amount <= balance && amount > 0)
-        {
-            balance -= amount;
-            Console.WriteLine($"Retiro exitoso: -{amount:C}. Nuevo saldo: {balance:C}");
-        }
-        else
-        {
-            Console.WriteLine("Fondos insuficientes o monto inválido.");
-        }
-    }
-
-    public decimal GetBalance()
-    {
-        return balance;
-    }
-}
-
 class Program
 {
     static void Main(string[] args)
     {
-        BankAccount account = new BankAccount(1000m); // Cuenta con saldo inicial de 1000
+        Employee emp = new Employee();
+        Console.WriteLine($"Employee Pay: {emp.Calculatepay()}");
 
-        account.Deposit(500m);   // Depositar
-        account.Withdraw(200m);  // Retirar
-        account.Withdraw(2000m); // Intentar retirar más del saldo
+        HourlyEmployee hourlyEmp = new HourlyEmployee();
+        Console.WriteLine($"Hourly Employee Pay: {hourlyEmp.Calculatepay()}");
+    }
+}
 
-        Console.WriteLine($"Saldo final: {account.GetBalance():C}");
+// Clase padre
+public class Employee
+{
+    public virtual float Calculatepay()
+    {
+        return 100f;
+    }
+}
 
-        Console.ReadLine();
+// Clase hija
+public class HourlyEmployee : Employee
+{
+    public override float Calculatepay()
+    {
+        return 9f * 100f;
     }
 }
