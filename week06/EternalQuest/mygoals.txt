@@ -1,0 +1,4 @@
+160
+SimpleGoal:Continue studying IT Skills,Get improvement in IT skill with Microsoft Azure,15,True
+EternalGoal:Read scriptures at least 3 times in a week,Read it in Gospel Library app.,50
+ChecklistGoal:Pratice my English Skills,Talk with my son each day.,20,3,3,100
